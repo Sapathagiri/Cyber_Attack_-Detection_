@@ -60,7 +60,7 @@ Edit
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/IntrusionDetectionSystem.git
+   https://github.com/Sapathagiri/Cyber_Attack_-Detection_.git
 Navigate to the project directory:
 
 bash
@@ -113,11 +113,9 @@ Edit
    git add README.md
 Commit the changes:
 
-bash
-Copy
-Edit
+
 git commit -m "Added README file for the project"
-Push the changes:
+
 
 bash
 Copy
