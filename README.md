@@ -1,123 +1,183 @@
-Step 1: Create a README file
+# Cyber Attack Detection System
 
-In your project directory, create a file named README.md.
-You can use this command in the terminal:
-bash
-Copy
-Edit
-touch README.md
-Step 2: Add the following content to your README.md file:
+This project implements a machine learning-based Intrusion Detection System (IDS) that can identify and classify different types of cyber attacks using network traffic data.
 
-markdown
-Copy
-Edit
-# Intrusion Detection System (IDS) using PCA and Random Forest
+## Overview
 
-This project implements an Intrusion Detection System (IDS) using Principal Component Analysis (PCA) for dimensionality reduction and Random Forest (RF) for classification. The system classifies network activity as either normal or one of several types of network intrusions.
+The system uses two machine learning algorithms:
+1. Random Forest with Principal Component Analysis (PCA-RF)
+2. Support Vector Machine (SVM)
 
-## 📊 Dataset
+Both models are trained on network traffic data to detect various types of cyber attacks including:
+- Back attacks
+- Buffer overflow
+- Guess password attempts
+- Port scanning
+- Network probing
+- And more...
 
-The project uses a network traffic dataset containing 10,000 records with 42 features. The class labels have been converted to numerical values for model training and evaluation.
+## Requirements
 
-### Class Labels:
+The project requires the following Python packages:
+```
+pandas
+scikit-learn
+imbalanced-learn
+matplotlib
+scipy
+```
 
-back-->0
-buffer_overflow-->1
-ftp_write-->2
-guess_passwd-->3
-imap-->4
-ipsweep-->5
-land-->6
-loadmodule-->7
-multihop-->8
-neptune-->9
-nmap-->10
-normal-->11
-perl-->12
-phf-->13
-pod-->14
-portsweep-->15
-rootkit-->16
-satan-->17
-smurf-->18
-spy-->19
-teardrop-->20
-warezclient-->21
-warezmaster-->22
-
-markdown
-Copy
-Edit
-
-## ⚙️ Features
-
-- **Dimensionality Reduction:** PCA
-- **Classification Algorithm:** Random Forest
-- **Imbalanced Dataset Handling**
-- **Training and Testing Dataset Splits**
-
-## 🛠️ Installation and Setup
-
-1. Clone the repository:
-   ```bash
-   https://github.com/Sapathagiri/Cyber_Attack_-Detection_.git
-Navigate to the project directory:
-
-bash
-Copy
-Edit
-cd IntrusionDetectionSystem
-Install the required Python packages:
-
-bash
-Copy
-Edit
+You can install all requirements using:
+```bash
 pip install -r requirements.txt
-Run the Intrusion Detection system:
+```
 
-bash
-Copy
-Edit
+## Dataset
+
+The project uses the `cybermg.csv` dataset which contains network traffic data with the following features:
+- Protocol type
+- Service
+- Flag
+- Duration
+- Source and destination bytes
+- Various network statistics
+- Attack class labels
+
+## Project Structure
+
+```
+CyberAttack/
+├── IntrusionDetection.py    # Main detection script
+├── cybermg.csv             # Dataset file
+├── requirements.txt        # Project dependencies
+└── README.md              # This file
+```
+
+## How It Works
+
+The detection system works in the following steps:
+
+1. **Data Loading**: Loads the network traffic dataset
+2. **Preprocessing**: 
+   - Converts categorical features to numerical using Label Encoding
+   - Handles imbalanced data using SMOTE (Synthetic Minority Oversampling Technique)
+3. **Feature Selection**: 
+   - Applies Principal Component Analysis (PCA) for dimensionality reduction
+4. **Model Training and Evaluation**:
+   - Trains Random Forest and SVM models
+   - Evaluates model performance using accuracy metrics
+   - Generates comparison plots
+
+## Running the System
+
+To run the intrusion detection system:
+
+1. Make sure all requirements are installed:
+```bash
+pip install -r requirements.txt
+```
+
+2. Run the main script:
+```bash
 python IntrusionDetection.py
-📈 Results
-The system evaluates the testing dataset and predicts intrusion types using PCA and RF. Below are some evaluation metrics:
+```
 
-Accuracy: 94%
-Precision: 92%
-Recall: 93%
-🚀 Usage
-Modify the dataset as needed (data.csv) and ensure the same preprocessing steps are followed.
-For visualizations, use matplotlib or seaborn.
-🧑‍💻 Contributing
-Fork the project
-Create your feature branch (git checkout -b feature/AmazingFeature)
-Commit your changes (git commit -m 'Add some AmazingFeature')
-Push to the branch (git push origin feature/AmazingFeature)
-Open a Pull Request
-📜 License
-This project is licensed under the MIT License. See LICENSE for more information.
+The script will:
+- Load and preprocess the data
+- Train both models
+- Display accuracy results
+- Show a comparison plot
 
-📧 Contact
-For any inquiries, reach out at your-email@example.com
+## Results
 
-yaml
-Copy
-Edit
+In our tests, the models achieved the following accuracy:
+- PCA-RF: ~86.4% accuracy
+- SVM: ~51.6% accuracy
 
----
+The Random Forest classifier with PCA shows significantly better performance in detecting cyber attacks compared to the SVM approach.
 
-**Step 3: Commit and Push Changes to GitHub**
+## Future Improvements
 
-1. Stage the changes:
-   ```bash
-   git add README.md
-Commit the changes:
+Potential areas for enhancement:
+1. Feature engineering to improve detection accuracy
+2. Implementation of additional machine learning algorithms
+3. Real-time detection capabilities
+4. Enhanced visualization of results
+5. Support for additional types of cyber attacks
 
+## Contributing
 
-git commit -m "Added README file for the project"
+Feel free to contribute to this project by:
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
 
+## Commands Reference
 
-bash
-Copy
-Edit
-git push origin main
+Here are the common commands you'll need to work with this system:
+
+### Setup Commands
+
+```bash
+# Clone the repository (if using git)
+git clone <repository-url>
+cd CyberAttack
+
+# Create a virtual environment (recommended)
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+# On Unix or MacOS:
+source venv/bin/activate
+
+# Install requirements
+pip install -r requirements.txt
+```
+
+### Running the System
+
+```bash
+# Run the main detection script
+python IntrusionDetection.py
+
+# To run with specific Python version (if multiple installed)
+python3 IntrusionDetection.py
+```
+
+### Development Commands
+
+```bash
+# Check Python version
+python --version
+
+# List installed packages
+pip list
+
+# Update pip
+python -m pip install --upgrade pip
+
+# Install a new package and add to requirements
+pip install <package-name>
+pip freeze > requirements.txt
+```
+
+### Troubleshooting Commands
+
+```bash
+# Check if required packages are installed
+pip show pandas
+pip show scikit-learn
+pip show imbalanced-learn
+pip show matplotlib
+pip show scipy
+
+# Verify dataset exists
+dir cybermg.csv  # On Windows
+ls cybermg.csv   # On Unix/MacOS
+
+# Check Python path
+python -c "import sys; print(sys.path)"
